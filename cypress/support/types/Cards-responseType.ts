@@ -39,6 +39,16 @@ export type GetCardByIdResponse = {
   isTemplate: boolean;
   cardRole: null | string;
 }
+export type GetStickerByIdResponse = {
+  id: string;
+  top: number;
+  left: number;
+  zIndex: number;
+  rotate: number;
+  image: string;
+  imageUrl: string;
+  imageScaled: any[];
+}
 export interface TrelloDataParams {
   auth: {
         key: string;
@@ -52,5 +62,13 @@ export interface TrelloDataParams {
     cards: {
         idCardA: string;
         idCardB: string;
+    };
+    board: {
+      idBoard : string;
+    };
+    stickers: {
+      id: string;
+      randomStickerName: string;
+      defaultStickers: string[];
     };
 }
