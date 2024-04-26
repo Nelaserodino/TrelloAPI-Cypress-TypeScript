@@ -53,4 +53,12 @@ export interface TrelloDataParams {
         idCardA: string;
         idCardB: string;
     };
+    board: {
+      idBoard : string;
+    };
+    stickers: {
+      id: string;
+      randomStickerName: string;
+      defaultStickers: string[];
+    };
 }
