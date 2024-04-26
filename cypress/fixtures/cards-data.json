@@ -4,5 +4,26 @@
 		"active": {"id": "6556516a7ecd359fc7ea7ea3", "name": "ACTIVE"},
 		"done": {"id": "6556516dc2003862888d3238", "name": "DONE"}
 	},
-	"cards": {"idCardA": "", "idCardB": ""}
+	"cards": {"idCardA": "", "idCardB": ""},
+	"board":{
+		"idBoard": "654a326a8bf817161ed88568"
+	  },
+	  "stickers": {
+		  "id": "",
+		  "randomStickerName": "",
+		"defaultStickers": [
+		  "taco-cool",
+			"taco-confused",
+			"taco-money",
+			"taco-reading",
+			"taco-trophy",
+			"taco-sleeping",
+			"taco-clean",
+			"taco-love",
+			"taco-angry",
+			"taco-robot",
+			"taco-alert",
+		  "heart"
+		]
+	  }
 }
