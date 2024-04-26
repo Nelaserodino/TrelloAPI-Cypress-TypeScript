@@ -43,10 +43,12 @@ export class TrelloCardApi {
 
 		return TrelloCardApi.request('POST', urlList.addStickerToCard, {
 			idCard: idCard,
-			image: stickerImage,
-			top: top,
-			left: left,
-			zIndex: zIndex
+			body : {
+				image: stickerImage,
+				top: top,
+				left: left,
+				zIndex: zIndex
+			}
 		});
 	}
 }
