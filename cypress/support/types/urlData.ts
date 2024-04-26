@@ -4,7 +4,13 @@ export enum urlList {
 	getCard = '/cards/{idCard}?key={key}&token={token}',
 	createCard = '/cards?idList={idList}&key={key}&token={token}',
 	updateCard = '/cards/{idCard}?&key={key}&token={token}',
-	deleteCard = '/cards/{idCard}?&key={key}&token={token}'
+	deleteCard = '/cards/{idCard}?&key={key}&token={token}',
+	createList = '/lists?name={name}&idBoard={idBoard}&key={key}&token={token}',
+	deleteList = '/lists/{idList}?key={key}&token={token}',
+	addStickerToCard = '/cards/{idCard}/stickers?image={image}&top={top}&left={left}&zIndex={zIndex}&key={key}&token={token}',
+	getSticker = '/cards/{idCard}/stickers/{idSticker}?key={key}&token={token}',
+	updateSticker = '/cards/{idCard}/stickers/{idSticker}?top={top}&left={left}&zIndex={zIndex}&key={key}&token={token}',
+	getAllStckersOnCard = '/cards/{idCard}/stickers/?key={key}&token={token}'
 }
 export enum method {
 	GET = 'GET',

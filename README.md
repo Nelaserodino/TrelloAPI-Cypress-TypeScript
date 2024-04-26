@@ -33,7 +33,3 @@ This repository is designed for practicing API interactions using the Trello API
 ```bash
 npm test
 
-
-
-
-
