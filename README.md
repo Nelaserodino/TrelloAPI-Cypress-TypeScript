@@ -29,10 +29,9 @@ This repository is designed for practicing API interactions using the Trello API
 
 ### Running Tests
 
-Execute the tests by running the following command:
-
-    ```bash
-    npm test
+**Execute the tests by running the following command:**
+```bash
+npm test
 
 
 
