@@ -9,7 +9,6 @@ const dataParams: TrelloDataParams = dataJson as TrelloDataParams;
 const description : string =  faker.commerce.productDescription();
 const updatedDescription : string =  faker.commerce.productDescription();
 const cardNameA : string =  faker.commerce.productName();
-const cardNameB : string =  faker.commerce.productName();
 const updatedCardNameA : string =  faker.commerce.productName();
 
 const createTrelloList = (options : {}) => {
@@ -96,8 +95,8 @@ const expectedStickerResult = (stickerId : string, responseBody : GetStickerById
 	expect(responseBody).to.have.property('imageScaled').that.is.an('array');
 };
 
-describe('{API} Trello | Cards | Create Cards from a Board', () => {
-	before('Precon: The user creates a Backlog, Active and Done  List',() => {
+describe('{API} Trello | Cards | Create Cards on a Board', () => {
+	before('Precon: The user creates a Backlog, Active and Done Lists on a Board',() => {
 		const optionsBacklog = {
 			idBoard: dataParams.board.idBoard,
 			name: dataParams.lists.backlog.name
@@ -120,7 +119,7 @@ describe('{API} Trello | Cards | Create Cards from a Board', () => {
 			dataParams.lists.done.id = id;
 		});
 	});
-	beforeEach('Check that the user can create a card on the Backlog list', () => {
+	beforeEach('The user creates a card on the Backlog list', () => {
 		const options = {
 			idList: dataParams.lists.backlog.id,
 			body: {
