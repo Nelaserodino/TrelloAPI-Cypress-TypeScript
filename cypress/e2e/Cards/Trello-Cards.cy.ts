@@ -12,6 +12,21 @@ const cardNameA : string =  faker.commerce.productName();
 const cardNameB : string =  faker.commerce.productName();
 const updatedCardNameA : string =  faker.commerce.productName();
 
+const createTrelloList = (options : {}) => {
+	return TrelloCardApi.request(method.POST, urlList.createList, options).then(response => {
+		expect(response).to.be.an('object');
+		expect(response.status).to.eql(200);
+		return response.body.id;
+	});
+};
+const deleteTrelloList = (options : {}) => {
+	return TrelloCardApi.request(method.PUT, urlList.deleteList, options).then(response => {
+		expect(response).to.be.an('object');
+		expect(response.status).to.eql(200);
+	});
+};
+
+
 function checkListNaming(listId: string, listName: string) {
 	const options = {
 		idList: listId,
