@@ -347,6 +347,32 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			expect(response.body).to.include(dataJson.errorMessage.invalidTop);
 		});
 	});
+	it('Cards-Stickers | TC20:Should return a 400 status when left value is below -60', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, left:TrelloCardApi.generateNumberBelowMinus60() }).then(response => {
+			//This test SOMETIMES fails because the left parameter accepts a number from -60 to -100. If the randomly generated value for left is below -101, it will pass
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidLeft);
+		});
+	});
+	it('Cards-Stickers | TC21:Should return a 400 status when left value is -61', () => {
+		//This test fails because the left parameter accepts a number from -60 to -100
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, left:-61 }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidLeft);
+		});
+	});
+	it('Cards-Stickers | TC22:Should return a 400 status when left value is above 100', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, left:TrelloCardApi.generateNumberAbove100() }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidLeft);
+		});
+	});
+	it('Cards-Stickers | TC23:Should return a 400 status when left value is 101', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, left: 101 }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidLeft);
+		});
+	});
 	afterEach('Check that the user can delete a card on the Backlog list', () => {
 		const optionsBacklog = {
 			idList: dataParams.lists.backlog.id
