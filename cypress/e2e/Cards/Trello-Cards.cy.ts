@@ -303,14 +303,26 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 				expect(response.status).to.eql(200);
 			});
 	});
-	it.only('Cards-Stickers | TC13:Should return a 400 status when idCard is not valid for adding a sticker', () => {
+	it('Cards-Stickers | TC13:Should return a 400 status when idCard is not valid for adding a sticker', () => {
 		TrelloCardApi.addRandomSticker({idCard: 'not-valid-card-id'})
 			.then(response => {
 				expect(response.status).to.eq(400);
 				expect(response.body).to.include(dataJson.errorMessage.invalidIdCard);
 			});
 	});
-
+	it('Cards-Stickers | TC14:Should return a 404 status when required idCard is missing when adding a sticker', () => {
+		TrelloCardApi.addRandomSticker({idCard: ''})
+			.then(response => {
+				expect(response.status).to.eq(404);
+				expect(response.statusText).to.eq(dataJson.errorMessage.notFound);
+			});
+	});
+	it('Cards-Stickers | TC15:Should return a 401 status when sticker name is invalid', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, image: 'notValidSticker'}).then(response => {
+			expect(response.status).to.eq(401);
+			expect(response.body.message).to.include(dataJson.errorMessage.invalidSticker);
+		});
+	});
 	afterEach('Check that the user can delete a card on the Backlog list', () => {
 		const optionsBacklog = {
 			idList: dataParams.lists.backlog.id
