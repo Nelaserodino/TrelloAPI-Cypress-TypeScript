@@ -373,6 +373,18 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			expect(response.body).to.include(dataJson.errorMessage.invalidLeft);
 		});
 	});
+	it('Cards-Stickers | TC24:Should return a 400 status when zIndex is a string', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, zIndex: 'notAnInteger'}).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body.message).to.include(dataJson.errorMessage.invalidZIndex);
+		});
+	});
+	it('Cards-Stickers | TC25:Should return a 400 status when zIndex is not an integer ', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, zIndex: 0.1}).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body.message).to.include(dataJson.errorMessage.invalidZIndex);
+		});
+	});
 	afterEach('Check that the user can delete a card on the Backlog list', () => {
 		const optionsBacklog = {
 			idList: dataParams.lists.backlog.id
