@@ -60,4 +60,10 @@ export class TrelloCardApi {
 			}
 		});
 	}
+	static generateNumberAbove100(): number {
+		return Math.floor(Math.random() * 100) + 101;
+	}
+	static generateNumberBelowMinus60(): number {
+		return Math.floor(Math.random() * 60) - 120;
+	}
 }
