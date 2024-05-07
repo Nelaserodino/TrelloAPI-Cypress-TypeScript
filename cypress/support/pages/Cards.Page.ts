@@ -10,9 +10,16 @@ export class TrelloCardApi {
 		endpointKey: urlList,
 		options?: {
             idCard?: string,
-            idList?: string,
-            body?: Record<string, any>
-        }
+			idList?: string,
+			idBoard?: string,
+            idSticker?: string,
+            image?: string,
+            top?: number,
+            left?: number,
+            zIndex?: number,
+            body?: Record<string, any>,
+			failOnStatusCode?: boolean 
+        },
 	) {
 		const apiKey = Cypress.env('trelloApiKey');
     	const token = Cypress.env('trelloToken');
@@ -26,6 +33,7 @@ export class TrelloCardApi {
 			method: method,
 			url: url,
 			body: options?.body,
+			failOnStatusCode: false
 		});
 	}
 	static getRandomInt(min : number, max : number) {
@@ -49,7 +57,6 @@ export class TrelloCardApi {
 				top: top,
 				left: left,
 				zIndex: zIndex,
-				failOnStatusCode: false,
 			}
 		});
 	}

@@ -71,4 +71,12 @@ export interface TrelloDataParams {
       randomStickerName: string;
       defaultStickers: string[];
     };
+    errorMessage: {
+      notFound: string;
+      invalidIdCard: string;
+      invalidSticker: string;
+      invalidTop: string;
+      invalidLeft: string;
+      invalidZIndex: string;
+    }
 }
