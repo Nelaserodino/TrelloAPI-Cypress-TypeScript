@@ -223,7 +223,7 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			});
 	});
 	it('Cards-Stickers | TC9:Check that the user can Add a Sticker to card A', () => {
-		TrelloCardApi.addRandomSticker(dataParams.cards.idCardA)
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA})
 			.then(response => {
 				const responseBody: GetStickerByIdResponse = response.body;
 				expect(response).to.be.an('object');
@@ -233,7 +233,7 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			});
 	});
 	it('Cards-Stickers | TC10:Check that the user can get a Sticker', () => {
-		TrelloCardApi.addRandomSticker(dataParams.cards.idCardA)
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA})
 			.then(response => {
 				const responseBody: GetStickerByIdResponse = response.body;
 				expect(response.status).to.eql(200);
@@ -256,7 +256,7 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			});
 	});
 	it('Cards-Stickers | TC11:Check that the user can update a Sticker', () => {
-		TrelloCardApi.addRandomSticker(dataParams.cards.idCardA)
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA})
 			.then(response => {
 				const responseBody: GetStickerByIdResponse = response.body;
 				expect(response.status).to.eql(200);
@@ -284,7 +284,7 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			});
 	});
 	it('Cards-Stickers | TC12:Check that the user can delete the sticker', () => {
-		TrelloCardApi.addRandomSticker(dataParams.cards.idCardA)
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA})
 			.then(response => {
 				const responseBody: GetStickerByIdResponse = response.body;
 				expect(response.status).to.eql(200);
