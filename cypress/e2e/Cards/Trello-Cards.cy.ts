@@ -323,6 +323,30 @@ describe('{API} Trello | Cards | Create Cards on a Board', () => {
 			expect(response.body.message).to.include(dataJson.errorMessage.invalidSticker);
 		});
 	});
+	it('Cards-Stickers | TC16:Should return a 400 status when top value is less than 60', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, top:TrelloCardApi.generateNumberBelowMinus60() }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidTop);
+		});
+	});
+	it('Cards-Stickers | TC17:Should return a 400 status when top value is -61', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, top: -61 }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidTop);
+		});
+	});
+	it('Cards-Stickers | TC18:Should return a 400 status when top value is 101', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, top: 101 }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidTop);
+		});
+	});
+	it('Cards-Stickers | TC19:Should return a 400 status when top value is higher than 100', () => {
+		TrelloCardApi.addRandomSticker({idCard: dataParams.cards.idCardA, top:TrelloCardApi.generateNumberAbove100() }).then(response => {
+			expect(response.status).to.eq(400);
+			expect(response.body).to.include(dataJson.errorMessage.invalidTop);
+		});
+	});
 	afterEach('Check that the user can delete a card on the Backlog list', () => {
 		const optionsBacklog = {
 			idList: dataParams.lists.backlog.id
