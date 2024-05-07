@@ -25,5 +25,13 @@
 			"taco-alert",
 		  "heart"
 		]
+	  },
+	  "errorMessage": {
+		"notFound": "Not Found",
+		"invalidIdCard": "invalid id",
+		"invalidSticker": "invalid sticker",
+		"invalidTop": "invalid value for top",
+		"invalidLeft": "invalid value for left",
+		"invalidZIndex": "Invalid Z Value"
 	  }
 }
