@@ -34,12 +34,13 @@ export class TrelloCardApi {
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	static addRandomSticker(idCard: string) {
-		const randomSticker = Math.floor(Math.random() * data.stickers.defaultStickers.length);
-		const stickerImage = data.stickers.defaultStickers[randomSticker];
-		const top = TrelloCardApi.getRandomInt(-60, 100);
-		const left = TrelloCardApi.getRandomInt(-60, 100);
-		const zIndex = TrelloCardApi.getRandomInt(0, 10);
+	static addRandomSticker(options?: { idCard?: string; top?: number; left?: number; image?: string; zIndex?: number }) {
+		
+		const idCard = options?.idCard;
+		const stickerImage = options?.image || data.stickers.defaultStickers[Math.floor(Math.random() * data.stickers.defaultStickers.length)];
+		const top = options?.top === undefined ?  TrelloCardApi.getRandomInt(-60, 100)  : options.top;
+		const left = options?.left === undefined ? TrelloCardApi.getRandomInt(-60, 100) : options.left;
+		const zIndex = options?.zIndex === undefined ? TrelloCardApi.getRandomInt(0, 10) : options.zIndex;
 
 		return TrelloCardApi.request('POST', urlList.addStickerToCard, {
 			idCard: idCard,
@@ -47,7 +48,8 @@ export class TrelloCardApi {
 				image: stickerImage,
 				top: top,
 				left: left,
-				zIndex: zIndex
+				zIndex: zIndex,
+				failOnStatusCode: false,
 			}
 		});
 	}
